@@ -1,0 +1,202 @@
+%==================================================================
+%  MajorMatch Dataset
+%  Purpose: Predict suitable college major pathways based on
+%           academic performance and personality attributes.
+%==================================================================
+
+@RELATION majormatch
+
+% --- Demographic and academic attributes ---
+@ATTRIBUTE gender                 {male,female}
+@ATTRIBUTE track_strand           {acad_abm,acad_stem,acad_humss,acad_gas,
+                                    tvl_he,tvl_ia,tvl_ict,tvl_afa,sports,arts_design}
+@ATTRIBUTE overall_gpa            {low,medium,high}
+@ATTRIBUTE parental_education     {none,highschool,bachelor,master,doctorate}
+@ATTRIBUTE high_school_type       {public,private,international}
+
+% --- Study habits and extracurricular ---
+@ATTRIBUTE study_hours_per_week   REAL
+@ATTRIBUTE extracurricular        {none,arts,sports,scienceclub,studentgov}
+
+% --- Personality and interest indicators ---
+@ATTRIBUTE hobby_interest         {low,medium,high}
+@ATTRIBUTE interest_arts          {low,medium,high}
+@ATTRIBUTE big5_openness          {low,medium,high}
+@ATTRIBUTE big5_conscientiousness {low,medium,high}
+
+% --- Class to predict ---
+@ATTRIBUTE chosen_major           {engineering,computerscience,business,
+                                    education,healthsciences,arts,
+                                    socialsciences,law}
+
+@DATA
+% gender, track_strand, overall_gpa, parental_education, high_school_type,
+% study_hours_per_week, extracurricular,
+% hobby_interest, interest_arts, big5_openness, big5_conscientiousness,
+% chosen_major
+
+male,acad_stem,high,bachelor,public,15,sports,medium,low,high,high,engineering
+female,acad_abm,medium,master,private,12,arts,high,high,medium,high,business
+male,acad_humss,medium,highschool,public,10,studentgov,high,medium,high,medium,socialsciences
+female,acad_gas,low,none,public,8,none,medium,medium,low,low,education
+male,tvl_ict,medium,bachelor,private,14,scienceclub,low,low,medium,medium,computerscience
+female,tvl_he,high,master,international,18,arts,high,high,high,high,healthsciences
+male,sports,medium,bachelor,public,20,sports,medium,low,medium,high,law
+female,arts_design,high,doctorate,private,16,arts,high,high,high,medium,arts
+
+
+% ----- Upon testing the accuracy -----
+% ----- Correctly Classified Instances: 8
+
+
+% --------- Random Forest ---------- 100%
+% ------ Time taken to build model: 0.04 seconds
+% ------ Time taken to test model on training data: 0.01 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.0847
+% Root mean squared error                  0.141 
+% Relative absolute error                 38.7143 %
+% Root relative squared error             42.6329 %
+% Total Number of Instances                8  
+
+
+% ---------- Naive Bayes ----------- 100% 
+% ------ Time taken to build model: 0 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.0003
+% Root mean squared error                  0.001 
+% Relative absolute error                  0.1149 %
+% Root relative squared error              0.2963 %
+% Total Number of Instances                8    
+
+
+% --- Simple Logistic Regression --- 100%
+% ------ Time taken to build model: 0.05 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.0393
+% Root mean squared error                  0.0594
+% Relative absolute error                 17.9675 %
+% Root relative squared error             17.9675 %
+% Total Number of Instances                8     
+
+
+% ------ Logistic Regression ------- 100%
+% ------ Time taken to build model: 0.08 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0     
+% Root mean squared error                  0     
+% Relative absolute error                  0      %
+% Root relative squared error              0.0001 %
+% Total Number of Instances                8   
+
+
+% ---------- Random Tree ----------- 100% 
+% ------ Time taken to build model: 0 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0     
+% Root mean squared error                  0     
+% Relative absolute error                  0      %
+% Root relative squared error              0      %
+% Total Number of Instances                8     
+
+
+% --------- Hoeffding Tree --------- 100%
+% ------ Time taken to build model: 0.02 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0     
+% Root mean squared error                  0     
+% Relative absolute error                  0      %
+% Root relative squared error              0      %
+% Total Number of Instances                8    
+
+
+% ------- Logistic Model Tree ------ 100% 
+% ------ Time taken to build model: 0.05 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.0393
+% Root mean squared error                  0.0594
+% Relative absolute error                 17.9675 %
+% Root relative squared error             17.9675 %
+% Total Number of Instances                8    
+
+
+% --------- Decision Trees --------- 50% 
+% ------ Time taken to build model: 0 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           4               50      %
+% Incorrectly Classified Instances         4               50      %
+% Kappa statistic                          0.4286
+% Mean absolute error                      0.125 
+% Root mean squared error                  0.25  
+% Relative absolute error                 57.1429 %
+% Root relative squared error             75.5929 %
+% Total Number of Instances                8    
+
+
+% ---- Decision/Regression Tree ---- 12.5% 
+% ------ Time taken to build model: 0 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           1               12.5    %
+% Incorrectly Classified Instances         7               87.5    %
+% Kappa statistic                          0     
+% Mean absolute error                      0.2188
+% Root mean squared error                  0.3307
+% Relative absolute error                100      %
+% Root relative squared error            100      %
+% Total Number of Instances                8     
+
+
+% ---- k-Nearest Neighbors ---- 100%
+% ------ Time taken to build model: 0 seconds
+% ------ Time taken to test model on training data: 0.01 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.1094
+% Root mean squared error                  0.1654
+% Relative absolute error                 50      %
+% Root relative squared error             50      %
+% Total Number of Instances                8     
+
+% ---- Support Vector Machines ---- 100%
+% ------ Time taken to build model: 0.07 seconds
+% ------ Time taken to test model on training data: 0 seconds
+% -------------------------- Summary -------------------------------
+% Correctly Classified Instances           8              100      %
+% Incorrectly Classified Instances         0                0      %
+% Kappa statistic                          1     
+% Mean absolute error                      0.1875
+% Root mean squared error                  0.2912
+% Relative absolute error                 85.7143 %
+% Root relative squared error             88.0631 %
+% Total Number of Instances                8     
